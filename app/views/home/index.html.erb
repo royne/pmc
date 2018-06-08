@@ -3,17 +3,18 @@
   <head>
     <%= csrf_meta_tags %>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <title></title>
   </head>
   <body>
     <div class="baner">
-      <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: rgba(255,255,255,0.3);">
+      <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: rgba(255,255,255,0.5);">
         <div class="container">
           <a class="navbar-brand" href="#">Navbar</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <i class="fas fa-bars i-font"></i>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -28,7 +29,7 @@
 
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link color-link" href="#">Home <span class="sr-only">(current)</span></a>
               </li>
             </ul>
           </div>
@@ -36,13 +37,43 @@
       </nav>
 
       <section id="home">
-        <h1>GESTIONA LA OPERACIÓN DE TU INSTITUCIÓN EN LINEA</h1>
-        <p class="p-button">Registrate GRATIS</p>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-sm-12">
+              <h1>GESTIONA LA OPERACIÓN DE TU INSTITUCIÓN EN LINEA</h1>
+              <p class="p-button">Registrate GRATIS</p>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
 
     <section id="features">
-
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <div class="div-features">
+              <i class="far fa-address-card"></i>
+              <h4>GESTIONA LA HOJA DE VIDA DE TUS ALUMNOS</h3>
+              <p class="text-secondary">Es muy fácil, solo crea un nuevo alumno y conoce todo sobre el, permanencia, cursos, pagos, deudas… ten control de todo en un solo lugar.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="div-features">
+              <i class="far fa-money-bill-alt"></i>
+              <h4>CONOCE CUAL ES TU CARTERA</h3>
+              <p class="text-secondary">Detalle especifico de cuanto te deben y quines son los alumnos que no se encuentran al dia, facil y rápido y en tan solo unos clicks.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="div-features">
+              <i class="fas fa-chart-line"></i>
+              <h4>LLEVA UN CONTROL DE TUS INGRESOS</h3>
+              <p class="text-secondary">Conocer al detalle cuanto te ha entrado por conceptos de mensualidades, matriculas etc. nunca ha sido mas fácil tener todo en orden.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="banner">
