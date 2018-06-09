@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row justify-content-arround">
+    <div class="col-sm-8">
+      <h1>Controla tu gestion de la forma mas facil y segura.</h1><br>
+      <h3>Todos tus datos estan seguros con nosotros</h3>
+    </div>
+    <div class="col-sm-4 card card-devise">
+      <h2>Registro</h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.email_field :email, placeholder:"Email", autofocus: true, autocomplete: "email", class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> caracteres minimo)</em>
+          <% end %><br />
+          <%= f.password_field :password, placeholder:"Contraseña", autocomplete: "off", class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, placeholder:"Confirma contraseña", autocomplete: "off", class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Registrarce", class:"btn btn-block btn-primary btn-lg" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
