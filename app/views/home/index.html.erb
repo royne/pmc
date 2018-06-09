@@ -29,7 +29,7 @@
 
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link color-link" href="#">Iniciar Sesión <span class="sr-only">(current)</span></a>
+                <%= link_to 'Iniciar Sesión', new_user_session_path, class:"nav-link color-link" %>
               </li>
             </ul>
           </div>
@@ -41,7 +41,7 @@
           <div class="row justify-content-center">
             <div class="col-sm-12">
               <h1>GESTIONA LA OPERACIÓN DE TU INSTITUCIÓN EN LINEA</h1>
-              <p class="p-button">Pruébalo GRATIS</p>
+              <p class="p-button"><%= link_to 'Pruébalo GRATIS', new_user_registration_path, class:'link-button' %></p>
             </div>
           </div>
         </div>
