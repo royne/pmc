@@ -1,0 +1,45 @@
+<div id="student-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= title %></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <%= form_for @student, remote: true do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.text_field :name, class: "form-control input-lg", placeholder: "Nombre" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :last_name, class: "form-control input-lg", placeholder: "Apellido" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :cellphone, class: "form-control input-lg", placeholder: "Telefono" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :age, class: "form-control input-lg", placeholder: "Edad" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :address, class: "form-control input-lg", placeholder: "Dirección" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :course, class: "form-control input-lg", placeholder: "Programa / Curso" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :legal_guardian, class: "form-control input-lg", placeholder: "Nombre Acudiente" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :phone_lg, class: "form-control input-lg", placeholder: "Telefono Acudiente" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :eps, class: "form-control input-lg", placeholder: "Eps" %>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <%= f.submit 'Crear Estudiante', class: "btn btn-dark btn-lg btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

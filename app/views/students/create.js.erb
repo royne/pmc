@@ -1,0 +1,7 @@
+<% if @student.errors.empty? %>
+  $('.alert-success').html("El estudiante ha sido creado con éxito").show();
+  $('#student-modal').modal('hide');
+<% else %>
+  // muestra el primer error
+  alert('<%= @student.errors.full_messages[0] %>');
+<% end %>
