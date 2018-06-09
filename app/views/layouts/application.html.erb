@@ -11,8 +11,14 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <% if signed_in? %>
+        <ul class="navbar-brand">
+          <%= current_user.username %>
+        </ul>
+      <% else %>
       <div class="container">
         <a class="navbar-brand" href="#">Navbar</a>
+      <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,26 +37,35 @@
       </div>
     </nav>
 
+
     <div class="conainer">
       <div class="row justify-content-start">
-        <div class="col-sm-2 nav-left">
-          <div class="nav-button">
-            <p>boton</p>
+        <% if signed_in? %>
+          <div class="col-sm-2 nav-left">
+            <div class="nav-button">
+              <p>boton</p>
+            </div>
+            <div class="nav-button">
+              <p>boton</p>
+            </div>
+            <div class="nav-button">
+              <p>boton</p>
+            </div>
           </div>
-          <div class="nav-button">
-            <p>boton</p>
-          </div>
-          <div class="nav-button">
-            <p>boton</p>
-          </div>
-        </div>
+          <div class="col-sm-10">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
 
-        <div class="col-sm-10">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
+            <%= yield %>
+          </div>
+        <% else %>
+          <div class="col-sm-12">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
 
-          <%= yield %>
-        </div>
+            <%= yield %>
+          </div>
+        <% end %>
       </div>
     </div>
 
