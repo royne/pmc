@@ -1,31 +1,27 @@
 <div class="container">
   <div class="row justify-content-start">
     <div class="col-sm-6">
-      <h1>Estudiantes activos</h1>
-      <table class="table">
-        <thead>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Telefono</th>
-          <th>Edad</th>
-          <th>Dirección</th>
-          <th>Programa</th>
-          <th>Acudiente</th>
-          <th>Telefono</th>
-          <th>Eps</th>
+      <h2>Estudiantes activos</h2>
+      <table class="table table-hover table-sm">
+        <thead class="thead-light">
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Programa</th>
+            <th>Ver</th>
+          </tr>
         </thead>
         <% @students.each do |student| %>
-        <tbody>
-          <td><%= student.name %></td>
-          <td><%= student.last_name %></td>
-          <td><%= student.cellphone %></td>
-          <td><%= student.age %></td>
-          <td><%= student.address %></td>
-          <td><%= student.course %></td>
-          <td><%= student.legal_guardian %></td>
-          <td><%= student.phone_lg %></td>
-          <td><%= student.eps %></td>
-        </tbody>
+          <% if signed_in? && student.user == current_user %>
+            <tbody>
+              <tr>
+                <td><%= student.name %></td>
+                <td><%= student.last_name %></td>
+                <td><%= student.course %></td>
+                <td><a href="<%= root_path %>"><i class="far fa-eye"></i></a></td>
+              </tr>
+            </tbody>
+          <% end %>
         <% end %>
       </table>
     </div>
