@@ -38,7 +38,7 @@
       </div>
     </nav>
 
-
+    <!-- navegacion lateral  -->
     <div class="conainer">
       <div class="row justify-content-start">
         <% if signed_in? %>
@@ -47,22 +47,33 @@
               <%= link_to 'Nuevo Estudiante', new_student_path, remote: true %>
             </div>
             <div class="nav-button">
-              <p>boton</p>
+              <%= link_to 'Nuevo Pago', remote: true %>
             </div>
             <div class="nav-button">
               <p>boton</p>
             </div>
           </div>
+
           <div class="col-sm-10">
-            <p class="notice"><%= notice %></p>
-            <p class="alert"><%= alert %></p>
+
+            <% if flash[:notice] %>
+              <div class="alert alert-info"><%= flash[:notice] %></div>
+            <% end %>
+            <% if flash[:alert] %>
+              <div class="alert alert-danger"><%= flash[:alert] %></div>
+            <% end %>
 
             <%= yield %>
           </div>
         <% else %>
           <div class="col-sm-12">
-            <p class="notice"><%= notice %></p>
-            <p class="alert"><%= alert %></p>
+
+            <% if flash[:notice] %>
+              <div class="alert alert-info"><%= flash[:notice] %></div>
+            <% end %>
+            <% if flash[:alert] %>
+              <div class="alert alert-danger"><%= flash[:alert] %></div>
+            <% end %>
 
             <%= yield %>
           </div>

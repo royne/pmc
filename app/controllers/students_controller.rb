@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   def index
     @students = Student.all
+    @array_students_user = []
   end
 
   def new
@@ -15,6 +16,10 @@ class StudentsController < ApplicationController
       flash[:alert] = @student.errors.full_messages
       render :new
     end
+  end
+
+  def show
+    @student = Student.find(params[:id])
   end
 
   private
