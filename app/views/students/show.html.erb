@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col-sm-8">
+      <%= link_to "VOLVER", students_path %>
+      <div class="student-profile">
+        <div class="student-header">
+          <h1><b><%= @student.name.upcase %><%= @student.last_name.upcase %></b></h1>
+          <h3>Programa: <%= @student.course.capitalize %></h3>
+        </div>
+        <div class="student-body">
+          <p><b>Edad: </b><%= @student.age %></p>
+          <p><b>Telefono: </b><%= @student.cellphone %></p>
+          <p><b>Dirección: </b><%= @student.address %></p>
+          <p><b>Acudiente: </b><%= @student.legal_guardian %></p>
+          <p><b>Telefono acudiente: </b><%= @student.phone_lg %></p>
+          <p><b>Eps: </b><%= @student.eps %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <h2>Estado:</h2>
+      <h3 style="color: green;"><b>ACTIVO</b></h3><br>
+      <div class="button-pay">
+        <button type="button" class="btn btn-dark">Nuevo Pago</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <h1>Historial De Pagos</h1>
+  </div>
+</div>
