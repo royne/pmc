@@ -21,7 +21,7 @@
       <h2>Estado:</h2>
       <h3 style="color: green;"><b>ACTIVO</b></h3><br>
       <div class="button-pay">
-        <%= link_to "Nuevo Pago", new_payment_path, remote: true, class:"btn btn-dark" %>
+        <%= link_to "Nuevo Pago", new_payment_path(:student_id => params[:id]), remote: true, class:"btn btn-dark" %>
       </div>
     </div>
   </div>

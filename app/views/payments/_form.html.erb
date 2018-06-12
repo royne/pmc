@@ -8,7 +8,7 @@
       <%= form_for @payment, remote: true do |f| %>
         <div class="modal-body">
           <div class="form-group">
-            <%= f.hidden_field(:student_id, :value => @student.ids)  %>
+            <%= f.hidden_field(:student_id, :value => @student)  %>
           </div>
           <div class="form-group">
             <% monts = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'] %>
