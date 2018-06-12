@@ -1,0 +1,40 @@
+<div id="payment-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= title %></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <%= form_for @payment, remote: true do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.hidden_field(:student_id, :value => @student.ids)  %>
+          </div>
+          <div class="form-group">
+            <% monts = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'] %>
+            <%= f.label "Mes", class:"col-sm-5 col-form-label text-secondary" %>
+            <%= f.select :month, monts, class: "form-control input-lg" %>
+          </div>
+          <div class="form-group">
+            <%= f.label "Fecha de inicio", class:"col-sm-5 col-form-label text-secondary" %>
+            <%= f.date_select :start_date, class: "form-control", id:"start_date" %>
+          </div>
+          <div class="form-group">
+            <%= f.label "Fecha de finalización", class:"col-sm-5 col-form-label text-secondary" %>
+            <%= f.date_select :end_date, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :price, class: "form-control", placeholder: "Valor" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :detail, class: "form-control", placeholder: "Concepto" %>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <%= f.submit 'Crear Pago', class: "btn btn-dark btn-lg btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

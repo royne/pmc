@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+
   root 'home#index'
 
   resources :students
+  resources :payments
 
   devise_for :users
 

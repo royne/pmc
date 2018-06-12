@@ -1,0 +1,7 @@
+<% if @payment.errors.empty? %>
+  $('.alert-success').html("El pago ha sido creado con éxito").show();
+  $('#payment-modal').modal('hide');
+<% else %>
+  // muestra el primer error
+  alert('<%= @payment.errors.full_messages[0] %>');
+<% end %>
