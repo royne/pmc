@@ -20,6 +20,7 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
+    @payments = Payment.all.order(created_at: :desc)
   end
 
   private

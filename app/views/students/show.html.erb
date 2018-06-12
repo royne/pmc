@@ -4,7 +4,7 @@
       <%= link_to "VOLVER", students_path %>
       <div class="student-profile">
         <div class="student-header">
-          <h1><b><%= @student.name.upcase %><%= @student.last_name.upcase %></b></h1>
+          <h1><b><%= @student.name.upcase %> <%= @student.last_name.upcase %></b></h1>
           <h3>Programa: <%= @student.course.capitalize %></h3>
         </div>
         <div class="student-body">
@@ -21,12 +21,50 @@
       <h2>Estado:</h2>
       <h3 style="color: green;"><b>ACTIVO</b></h3><br>
       <div class="button-pay">
-        <button type="button" class="btn btn-dark">Nuevo Pago</button>
+        <%= link_to "Nuevo Pago", new_payment_path(:student_id => params[:id]), remote: true, class:"btn btn-dark" %>
       </div>
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <h1>Historial De Pagos</h1>
+  <!-- pagos  -->
+
+  <div class="row justify-content-start">
+    <div class="col-sm-8">
+      <div class="text-center">
+        <h1><b>Historial De Pagos</b></h1>
+      </div>
+      <table class="table table-hover table-sm">
+        <thead class="thead-light">
+          <tr>
+            <th>Mes</th>
+            <th class="text-center">Fecha de inicio</th>
+            <th class="text-center">Fecha de fin</th>
+            <th class="text-right">Valor</th>
+            <th class="text-right">Concepto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @payments.each do |payment| %>
+            <% if payment.student_id == @student.id %>
+              <tr>
+                <td><%= payment.month %></td>
+                <td class="text-center">
+                  <%= l(payment.start_date, format: "%d") %>
+                  <%= l(payment.start_date, format: "%b") %>
+                  <%= l(payment.start_date, format: "%y") %>
+                </td>
+                <td class="text-center">
+                  <%= l(payment.end_date, format: "%d") %>
+                  <%= l(payment.end_date, format: "%b") %>
+                  <%= l(payment.end_date, format: "%y") %>
+                </td>
+                <td class="text-right"><%= number_to_currency(payment.price, precision: 0) %></td>
+                <td class="text-right"><%= payment.detail %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
