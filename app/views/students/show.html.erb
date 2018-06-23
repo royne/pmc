@@ -28,7 +28,7 @@
 
   <!-- pagos  -->
 
-  <div class="row justify-content-start">
+  <div class="row justify-content-around">
     <div class="col-sm-8">
       <div class="text-center">
         <h1><b>Historial De Pagos</b></h1>
@@ -52,6 +52,24 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="text-center">
+        <h2><b>Estado de pagos</b></h2>
+        <% current_date = Time.now.strftime("%y%m%d") %>
+        <% student = @student.payments.last %>
+
+        <% if @student.payments.empty? %>
+          <p></p>
+        <% else %>
+          <% if student.end_date.strftime("%y%m%d") < current_date %>
+            <h3 style="color: red;"><b>EN MORA</b></h3><br>
+          <% else %>
+            <h3 style="color: green;"><b>PAZ Y SALVO</b></h3><br>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
