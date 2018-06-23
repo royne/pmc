@@ -20,8 +20,18 @@
                 <td><%= student.name %></td>
                 <td><%= student.last_name %></td>
                 <td><%= student.course %></td>
-                <td class="text-center"><a href="/students/<%= student.id %>"><i class="far fa-eye"></i></a></td>
-                <td class="text-center"><a href="<%= root_path %>"><i class="far fa-money-bill-alt"></i></a></td>
+                <td class="text-center"><a href="/students/<%= student.id %>"><i id="eye-color" class="far fa-eye" style="color: #403E38;"></i></a></td>
+                <td class="text-center">
+                  <% if student.payments.empty? %>
+                    <i class="far fa-money-bill-alt"></i>
+                  <% else %>
+                    <% if student.payments.last.end_date.strftime("%y%m%d") < @current_date %>
+                      <i class="far fa-money-bill-alt" style="color: red;" id="pay-color"></i>
+                    <% else %>
+                      <i class="far fa-money-bill-alt" style="color: green;" id="pay-color"></i>
+                    <% end %>
+                  <% end %>
+                </td>
               </tr>
             </tbody>
           <% end %>

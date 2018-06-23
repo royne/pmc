@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
   def index
     @students = Student.all
     @array_students_user = []
+    @current_date = Time.now.strftime("%y%m%d")
   end
 
   def new
@@ -21,6 +22,7 @@ class StudentsController < ApplicationController
   def show
     @student = Student.find(params[:id])
     @payments = Payment.all.order(created_at: :desc)
+    @current_date = Time.now.strftime("%y%m%d")
   end
 
   private
