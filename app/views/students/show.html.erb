@@ -47,7 +47,7 @@
           <% @payments.each do |payment| %>
             <% if payment.student_id == @student.id %>
               <!-- filas pagos con ajax -->
-              <%= render "row", payment: payment %>
+              <%= render "payments/row", payment: payment %>
             <% end %>
           <% end %>
         </tbody>
