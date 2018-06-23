@@ -46,21 +46,8 @@
         <tbody>
           <% @payments.each do |payment| %>
             <% if payment.student_id == @student.id %>
-              <tr>
-                <td><%= payment.month %></td>
-                <td class="text-center">
-                  <%= l(payment.start_date, format: "%d") %>
-                  <%= l(payment.start_date, format: "%b") %>
-                  <%= l(payment.start_date, format: "%y") %>
-                </td>
-                <td class="text-center">
-                  <%= l(payment.end_date, format: "%d") %>
-                  <%= l(payment.end_date, format: "%b") %>
-                  <%= l(payment.end_date, format: "%y") %>
-                </td>
-                <td class="text-right"><%= number_to_currency(payment.price, precision: 0) %></td>
-                <td class="text-right"><%= payment.detail %></td>
-              </tr>
+              <!-- filas pagos con ajax -->
+              <%= render "row", payment: payment %>
             <% end %>
           <% end %>
         </tbody>

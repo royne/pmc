@@ -1,4 +1,5 @@
 <% if @payment.errors.empty? %>
+  $('table tbody').append(' <%= j render "row", payment: @payment %>');
   $('.alert-success').html("El pago ha sido creado con éxito").show();
   $('#payment-modal').modal('hide');
 <% else %>
