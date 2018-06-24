@@ -1,3 +1,16 @@
-// Place all the styles related to the students controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// colores de los iconos
+
+#pay-color{ font-size: 1.2rem; }
+
+#eye-color{ font-size: 1.2rem; }
+#eye-color:hover{
+  color: #787272;
+  text-shadow: 0.8px 0.8px 0.8px #000;
+}
+
+// division
+
+.line-div{
+  border-bottom: 3px solid rgba(33, 37, 41, 0.8);
+  margin: 25px auto;
+}

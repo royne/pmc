@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row justify-content-start">
+  <div class="row justify-content-around">
     <div class="col-sm-8">
       <%= link_to "VOLVER", students_path %>
       <div class="student-profile">
@@ -8,12 +8,19 @@
           <h3>Programa: <%= @student.course.capitalize %></h3>
         </div>
         <div class="student-body">
-          <p><b>Edad: </b><%= @student.age %></p>
-          <p><b>Telefono: </b><%= @student.cellphone %></p>
-          <p><b>Dirección: </b><%= @student.address %></p>
-          <p><b>Acudiente: </b><%= @student.legal_guardian %></p>
-          <p><b>Telefono acudiente: </b><%= @student.phone_lg %></p>
-          <p><b>Eps: </b><%= @student.eps %></p>
+          <a class="btn btn-dark  " data-toggle="collapse" href="#cv" role="button" aria-expanded="false" >
+            <i class="far fa-address-card" style="font-size: 1.3rem;"></i> Datos del Estudiante
+          </a>
+          <div class="collapse" id="cv">
+            <div class="card card-body">
+              <p><b>Edad: </b><%= @student.age %></p>
+              <p><b>Telefono: </b><%= @student.cellphone %></p>
+              <p><b>Dirección: </b><%= @student.address %></p>
+              <p><b>Acudiente: </b><%= @student.legal_guardian %></p>
+              <p><b>Telefono acudiente: </b><%= @student.phone_lg %></p>
+              <p><b>Eps: </b><%= @student.eps %></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -26,9 +33,12 @@
     </div>
   </div>
 
+  <div class="row justify-content-center">
+    <div class="col-sm-11 line-div"></div>
+  </div>
   <!-- pagos  -->
 
-  <div class="row justify-content-start">
+  <div class="row justify-content-around">
     <div class="col-sm-8">
       <div class="text-center">
         <h1><b>Historial De Pagos</b></h1>
@@ -46,25 +56,28 @@
         <tbody>
           <% @payments.each do |payment| %>
             <% if payment.student_id == @student.id %>
-              <tr>
-                <td><%= payment.month %></td>
-                <td class="text-center">
-                  <%= l(payment.start_date, format: "%d") %>
-                  <%= l(payment.start_date, format: "%b") %>
-                  <%= l(payment.start_date, format: "%y") %>
-                </td>
-                <td class="text-center">
-                  <%= l(payment.end_date, format: "%d") %>
-                  <%= l(payment.end_date, format: "%b") %>
-                  <%= l(payment.end_date, format: "%y") %>
-                </td>
-                <td class="text-right"><%= number_to_currency(payment.price, precision: 0) %></td>
-                <td class="text-right"><%= payment.detail %></td>
-              </tr>
+              <!-- filas pagos con ajax -->
+              <%= render "payments/row", payment: payment %>
             <% end %>
           <% end %>
         </tbody>
       </table>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="text-center">
+        <h2><b>Estado de pagos</b></h2>
+        <% student = @student.payments.last %>
+        <% if @student.payments.empty? %>
+          <p></p>
+        <% else %>
+          <% if student.end_date.strftime("%y%m%d") < @current_date %>
+            <h3 style="color: red;"><b>EN MORA</b></h3><br>
+          <% else %>
+            <h3 style="color: green;"><b>PAZ Y SALVO</b></h3><br>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
