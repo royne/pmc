@@ -3,6 +3,9 @@ class StudentsController < ApplicationController
     @students = Student.all
     @array_students_user = []
     @current_date = Time.now.strftime("%y%m%d")
+
+    q = "%#{params[:keyword]}%"
+    @students = @students.where("name LIKE ? OR last_name LIKE ? OR course LIKE ?", q, q, q)
   end
 
   def new
