@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col-sm-8">
+      <h1>Estudiantes proximos a vencer</h1>
+      <table class="table table-hover table-sm">
+        <thead class="thead-light">
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Programa</th>
+            <th>Prox. Vencer</th>
+            <th>Ultimo pago</th>
+            <th class="text-center">Ver</th>
+          </tr>
+        </thead>
+        <% @students.each do |student| %>
+          <% if signed_in? && student.user == current_user && student.payments.last.end_date.strftime("%y%m%d") <= @expiration_date %>
+            <% if student.payments.last.end_date.strftime("%y%m%d") >= @current_date %>
+              <tbody>
+                <tr>
+                  <td><%= student.name %></td>
+                  <td><%= student.last_name %></td>
+                  <td><%= student.course %></td>
+                  <td style="color: #FF3C64">
+                    <%= l(student.payments.last.end_date, format: "%d") %>
+                    <%= l(student.payments.last.end_date, format: "%b") %>
+                    <%= l(student.payments.last.end_date, format: "%y") %>
+                  </td>
+                  <td><%= student.payments.last.month %></td>
+                  <td class="text-center"><a href="/students/<%= student.id %>"><i id="eye-color" class="far fa-eye" style="color: #403E38;"></i></a></td>
+                </tr>
+              </tbody>
+            <% end %>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
