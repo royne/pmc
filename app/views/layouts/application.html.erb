@@ -50,10 +50,10 @@
               <%= link_to 'Nuevo Estudiante', new_student_path, remote: true %>
             </div>
             <div class="nav-button">
-              <p>pago</p>
+              <%= link_to 'Deudores', debtors_index_path %>
             </div>
             <div class="nav-button">
-              <%= link_to 'Deudores', debtors_index_path %>
+              <%= link_to 'Por Vencer', expirations_index_path %>
             </div>
           </div>
 
