@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row justify-content-start">
+  <div class="row justify-content-around">
     <div class="col-sm-8">
       <h1>Estudiantes proximos a vencer</h1>
       <table class="table table-hover table-sm">
@@ -34,6 +34,56 @@
           <% end %>
         <% end %>
       </table>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="date text-center">
+        <h2>Fecha</h2>
+        <h3><strong><%= Time.now.strftime("%b %d") %></strong></h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-11 line-div"></div>
+  </div>
+
+  <!-- etudiantesw por vencer -->
+
+  <div class="row justify-content-around">
+    <div class="col-sm-6">
+      <a class="btn btn-dark btn-block" data-toggle="collapse" href="#cv" role="button" aria-expanded="false" >
+        <i class="far fa-money-bill-alt" style="font-size: 1.3rem;"> Vencen hoy</i>
+      </a>
+      <div class="collapse" id="cv">
+        <div class="card card-body">
+          <table class="table table-hover table-sm">
+            <thead class="thead-light">
+              <tr>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Apellido</th>
+                <th class="text-center">Programa</th>
+                <th class="text-center">Ver</th>
+              </tr>
+            </thead>
+            <% @students.each do |student| %>
+              <% if signed_in? && student.user == current_user && student.payments.last.end_date.strftime("%y%m%d") == @current_date %>
+                <tbody>
+                  <tr>
+                    <td class="text-center"><%= student.name %></td>
+                    <td class="text-center"><%= student.last_name %></td>
+                    <td class="text-center" style="color: #FF3C64"><b><%= student.course %></b></td>
+                    <td class="text-center"><a href="/students/<%= student.id %>"><i id="eye-color" class="far fa-eye" style="color: #403E38;"></i></a></td>
+                  </tr>
+                </tbody>
+              <% end %>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+
     </div>
   </div>
 </div>
