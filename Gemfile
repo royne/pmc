@@ -20,6 +20,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'devise'
+gem 'groupdate'
+gem "chartkick"
 
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1.1'
