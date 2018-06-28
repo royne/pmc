@@ -6,6 +6,8 @@ class StudentsController < ApplicationController
 
     q = "%#{params[:keyword]}%"
     @students = @students.where("name LIKE ? OR last_name LIKE ? OR course LIKE ?", q, q, q)
+
+    @user_students = User.find(current_user.id)
   end
 
   def new
