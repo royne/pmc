@@ -65,18 +65,31 @@
     </div>
 
     <div class="col-sm-3">
-      <div class="text-center">
-        <h2><b>Estado de pagos</b></h2>
-        <% student = @student.payments.last %>
-        <% if @student.payments.empty? %>
-          <p></p>
-        <% else %>
-          <% if student.end_date.strftime("%y%m%d") < @current_date %>
-            <h3 style="color: red;"><b>EN MORA</b></h3><br>
-          <% else %>
-            <h3 style="color: green;"><b>PAZ Y SALVO</b></h3><br>
-          <% end %>
-        <% end %>
+      <div class="row justify-content-center">
+        <div class="col-sm-10">
+          <div class="text-center">
+            <h2><b>Estado de pagos</b></h2>
+            <% student = @student.payments.last %>
+            <% if @student.payments.empty? %>
+              <p></p>
+            <% else %>
+              <% if student.end_date.strftime("%y%m%d") < @current_date %>
+                <h3 style="color: red;"><b>EN MORA</b></h3><br>
+              <% else %>
+                <h3 style="color: green;"><b>PAZ Y SALVO</b></h3><br>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-sm-10 text-center">
+          <div class="card">
+            <h3><b>Total Pagos</b></h3>
+            <span class="pay-sum"><%= number_to_currency(@sum, precision: 0) %></span> 
+          </div>
+        </div>
       </div>
     </div>
   </div>
