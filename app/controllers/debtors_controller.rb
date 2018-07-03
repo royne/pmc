@@ -7,6 +7,7 @@ class DebtorsController < ApplicationController
     q = "%#{params[:q_s]}%"
     @students = @students.where("name LIKE ? OR last_name LIKE ?", q, q)
 
+    @user_students = User.find(current_user.id)
   end
 
 end

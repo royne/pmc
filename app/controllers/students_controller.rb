@@ -28,6 +28,14 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     @payments = Payment.all.order(created_at: :desc)
     @current_date = Time.now.strftime("%y%m%d")
+
+    @sum = 0
+    @payments.each do |payment|
+     if payment.student_id == @student.id
+       @sum = @sum + payment.price
+     end
+    end
+
   end
 
   private

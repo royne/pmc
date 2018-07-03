@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col-sm-10">
+      <h1 class="text-center">ESTADISTICAS</h1>
+
+      <div class="col-sm-11 line-div"></div>
+
+      <div class="">
+        <h2 class="text-center">Estudiantes matriculados por dia</h2>
+        <%= line_chart @user_students.students.group_by_day(:created_at).count %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-11 line-div"></div>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-4 text-center">
+      <a class="btn btn-dark  " data-toggle="collapse" href="#month" role="button" aria-expanded="false" >
+        <i class="fas fa-users"></i> Estudiantes X Mes
+      </a>
+      <div class="collapse" id="month">
+        <div class="card card-body">
+          <%= pie_chart @user_students.students.group_by_month(:created_at, format: "%b").count %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4 text-center">
+      <a class="btn btn-dark  " data-toggle="collapse" href="#x" role="button" aria-expanded="false" >
+        <i class="fas fa-users"></i> Estudiantes X Programa
+      </a>
+      <div class="collapse" id="x">
+        <div class="card card-body">
+          <%= pie_chart @user_students.students.group(:course).count %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4 text-center">
+      <a class="btn btn-dark  " data-toggle="collapse" href="#y" role="button" aria-expanded="false" >
+        <i class="fas fa-users"></i> Estudiantes Deudores
+      </a>
+      <div class="collapse" id="y">
+        <div class="card card-body">
+          <%= pie_chart [["Deudores", @students_debtors.count], ["Al Dia", @user_students.students.count]]  %>
+      </div>
+    </div>
+  </div>
+</div>
