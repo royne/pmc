@@ -81,3 +81,19 @@
     </div>
   </div>
 </div>
+
+<!-- grafica de pago por estudiante  -->
+
+<div class="col-sm-11 text-center">
+  <a class="btn btn-dark  " data-toggle="collapse" href="#pxs" role="button" aria-expanded="false" >
+    <i class="fas fa-users"></i> Pago por Estudiantes
+  </a>
+  <div class="collapse" id="pxs">
+    <% c = [] %>
+    <% @array_students_user.each do |q| %>
+      <% c << d = Array.new.push(q.name) %>
+      <% d << q.payments.sum { |p| p.price } %>
+    <% end %>
+    <%= bar_chart c, colors:["green"] %>
+  </div>
+</div>

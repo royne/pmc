@@ -44,7 +44,20 @@
       <div class="collapse" id="y">
         <div class="card card-body">
           <%= pie_chart [["Deudores", @students_debtors.count], ["Al Dia", @user_students.students.count]]  %>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="col-sm-11 line-div"></div>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-4 text-center">
+      <h2 class="text-center">Total Pagos Mes de <%= Time.now.strftime("%b") %></h2>
+      <div class="card pay-sum">
+        <h2><%= number_to_currency(@sum_month, precision: 0) %></h2>
+      </div>
+    </div>
+  </div>
+
 </div>

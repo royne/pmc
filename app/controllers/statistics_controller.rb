@@ -11,5 +11,15 @@ class StatisticsController < ApplicationController
     end
     @students_debtors = students_debtors
 
+    # suma ingresos x Mes
+    @sum_month = 0
+    @user_students.students.each do |student|
+      student.payments.each do |payments|
+        if payments.start_date.strftime("%m") == Time.now.strftime("%m")
+          @sum_month = payments.price + @sum_month
+        end
+      end
+    end
+
   end
 end
