@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="row justify-content-around">
+  <%= link_to '<i class="fas fa-arrow-left"></i> Volver'.html_safe, students_path %></i>
+  <div class="row justify-content-around container-style">
     <div class="col-sm-8">
-      <%= link_to "VOLVER", students_path %>
       <div class="student-profile">
         <div class="student-header">
-          <h1><b><%= @student.name.upcase %> <%= @student.last_name.upcase %></b></h1>
+          <h1 class="title_show"><b><%= @student.name.upcase %> <%= @student.last_name.upcase %></b></h1>
           <h3>Programa: <%= @student.course.capitalize %></h3>
         </div>
         <div class="student-body">
@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="col-sm-2">
-      <h2>Estado:</h2>
+      <h2 class="title_show">Estado:</h2>
       <h3 style="color: green;"><b>ACTIVO</b></h3><br>
       <div class="button-pay">
         <%= link_to "Nuevo Pago", new_payment_path(:student_id => params[:id]), remote: true, class:"btn btn-dark" %>
@@ -41,7 +41,7 @@
   <div class="row justify-content-around">
     <div class="col-sm-8">
       <div class="text-center">
-        <h1><b>Historial De Pagos</b></h1>
+        <h1 class="title"><b>Historial De Pagos</b></h1>
       </div>
       <table class="table table-hover table-sm">
         <thead class="thead-light">
@@ -68,7 +68,7 @@
       <div class="row justify-content-center">
         <div class="col-sm-10">
           <div class="text-center">
-            <h2><b>Estado de pagos</b></h2>
+            <h2 class="title_show"><b>Estado de pagos</b></h2>
             <% student = @student.payments.last %>
             <% if @student.payments.empty? %>
               <p></p>
@@ -86,7 +86,7 @@
       <div class="row justify-content-center">
         <div class="col-sm-10 text-center">
           <div class="card">
-            <h3><b>Total Pagos</b></h3>
+            <h3 class="title_show"><b>Total Pagos</b></h3>
             <span class="pay-sum"><%= number_to_currency(@sum, precision: 0) %></span>
           </div>
         </div>

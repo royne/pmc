@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row justify-content-around">
+  <div class="row justify-content-around container-style">
     <div class="col-sm-10">
-      <h1 class="text-center">ESTADISTICAS</h1>
+      <h1 class="title text-center">ESTADISTICAS</h1>
 
       <div class="col-sm-11 line-div"></div>
 
       <div class="">
-        <h2 class="text-center">Estudiantes matriculados por dia</h2>
+        <h2 class="title text-center">Estudiantes matriculados por dia</h2>
         <%= line_chart @user_students.students.group_by_day(:created_at).count %>
       </div>
     </div>
@@ -43,7 +43,7 @@
       </a>
       <div class="collapse" id="y">
         <div class="card card-body">
-          <%= pie_chart [["Deudores", @students_debtors.count], ["Al Dia", @user_students.students.count]]  %>
+          <%= pie_chart [["Deudores", @students_debtors.count], ["Al Dia", @user_students.students.count - @students_debtors.count]]  %>
         </div>
       </div>
     </div>
@@ -51,9 +51,9 @@
 
   <div class="col-sm-11 line-div"></div>
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center bottom-card">
     <div class="col-sm-4 text-center">
-      <h2 class="text-center">Total Pagos Mes de <%= Time.now.strftime("%b") %></h2>
+      <h2 class=" title text-center">Total Pagos Mes de <%= Time.now.strftime("%b") %></h2>
       <div class="card pay-sum">
         <h2><%= number_to_currency(@sum_month, precision: 0) %></h2>
       </div>

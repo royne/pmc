@@ -1,7 +1,8 @@
 <div class="container">
-  <div class="row justify-content-around">
+  <%= link_to '<i class="fas fa-arrow-left"></i> Volver'.html_safe, students_path %></i>
+  <div class="row justify-content-around container-style">
     <div class="col-sm-8">
-      <h1>Estudiantes proximos a vencer</h1>
+      <h1 class="title text-center">Estudiantes proximos a vencer</h1>
       <table class="table table-hover table-sm">
         <thead class="thead-light">
           <tr>
@@ -38,7 +39,7 @@
 
     <div class="col-sm-3">
       <div class="date text-center">
-        <h2>Fecha</h2>
+        <h2 class="title">Fecha</h2>
         <h3><strong><%= Time.now.strftime("%b %d") %></strong></h3>
       </div>
     </div>
