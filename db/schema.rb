@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180612024501) do
+ActiveRecord::Schema.define(version: 20180713010216) do
 
   create_table "payments", force: :cascade do |t|
     t.string "month"
@@ -24,19 +24,29 @@ ActiveRecord::Schema.define(version: 20180612024501) do
     t.index ["student_id"], name: "index_payments_on_student_id"
   end
 
+  create_table "states", force: :cascade do |t|
+    t.boolean "state"
+    t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_states_on_student_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.string "last_name"
-    t.integer "cellphone"
+    t.string "cellphone"
+    t.string "email"
     t.integer "age"
     t.string "address"
     t.string "course"
     t.string "legal_guardian"
-    t.integer "phone_lg"
-    t.integer "eps"
+    t.string "phone_lg"
+    t.string "eps"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.boolean "state", default: true
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 
