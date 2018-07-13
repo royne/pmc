@@ -2,25 +2,32 @@
   <div class="row justify-content-around container-style">
     <!-- tabla de estudiantes -->
     <div class="col-sm-6">
-      <h2 class="title">Estudiantes activos</h2>
+      <h2 class="title">Estudiantes Matriculados</h2>
       <table class="table table-hover table-sm">
         <thead class="thead-light">
           <tr>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Programa</th>
-            <th class="text-center">Ver</th>
+            <th class="text-center">Estado</th>
             <th class="text-center">Pago</th>
+            <th class="text-center">Ver</th>
           </tr>
         </thead>
         <% @students.each do |student| %>
-          <% if signed_in? && student.user == current_user %>
+          <% if signed_in? && student.user == current_user  %>
             <tbody>
               <tr>
                 <td><%= student.name %></td>
                 <td><%= student.last_name %></td>
                 <td><%= student.course %></td>
-                <td class="text-center"><a href="/students/<%= student.id %>"><i id="eye-color" class="far fa-eye" style="color: #403E38;"></i></a></td>
+                <td class="text-center">
+                  <% if student.state == false %>
+                    <b><i class="far fa-times-circle" style="color: red;" id="pay-color"></i></b>
+                  <% else %>
+                    <i class="far fa-check-circle" style="color: green;" id="pay-color"></i>
+                  <% end %>
+                </td>
                 <td class="text-center">
                   <% if student.payments.empty? %>
                     <i class="far fa-money-bill-alt"></i>
@@ -32,6 +39,7 @@
                     <% end %>
                   <% end %>
                 </td>
+                <td class="text-center"><a href="/students/<%= student.id %>"><i id="eye-color" class="far fa-eye" style="color: #403E38;"></i></a></td>
               </tr>
             </tbody>
           <% end %>
@@ -43,14 +51,14 @@
       <div class="row justify-content-around">
         <!-- numero de estudiantes matriculados -->
         <div class="col-sm-4">
-          <div class="">
-            <h4 class="title">Estudiantes matriculados: </h4>
+          <div class="text-center">
+            <h4 class="title">Numero de Estudiantes: </h4>
             <% @students.each do |student| %>
               <% if student.user_id == current_user.id %>
                 <% @array_students_user.push(student) %>
               <% end %>
             <% end %>
-            <%= @array_students_user.length %>
+            <h3 class="title"><%= @array_students_user.length %></h3>
           </div>
         </div>
         <!-- formulario de busqueda -->

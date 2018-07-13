@@ -21,5 +21,11 @@ class StatisticsController < ApplicationController
       end
     end
 
+    state = Array.new
+    @user_students.students.each do |e|
+      e.state == false ? state.push(e) : ""
+    end
+    @state = state.count
+
   end
 end

@@ -16,7 +16,7 @@
           </tr>
         </thead>
         <% @students.each do |student| %>
-          <% if signed_in? && student.user == current_user && student.payments.last.end_date.strftime("%y%m%d") < @current_date %>
+          <% if signed_in? && student.user == current_user && student.payments.last.end_date.strftime("%y%m%d") < @current_date && student.state == true %>
             <tbody>
               <tr>
                 <td><%= student.name %></td>
