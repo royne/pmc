@@ -35,7 +35,14 @@ class StudentsController < ApplicationController
        @sum = @sum + payment.price
      end
     end
+  end
 
+  def edit
+    @student = Student.find(params[:id])
+  end
+
+  def update
+    @student = Student.update(params[:id], students_params)
   end
 
   private

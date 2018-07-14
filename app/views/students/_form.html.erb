@@ -37,10 +37,15 @@
           <div class="form-group">
             <%= f.text_field :eps, class: "form-control input-lg", placeholder: "Eps" %>
           </div>
+          <div class="form-group">
+            <% state = {:Activo => true, :Inactivo => false} %>
+            <%= f.label "Estado", class:"text-secondary" %>
+            <%= f.select :state, state, class:"form-control" %>
+          </div>
         </div>
 
         <div class="modal-footer">
-          <%= f.submit 'Crear Estudiante', class: "btn btn-dark btn-lg btn-block" %>
+          <%= f.submit button_name, class: "btn btn-dark btn-lg btn-block" %>
         </div>
       <% end %>
     </div>

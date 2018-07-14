@@ -19,6 +19,7 @@
               <p><b>Acudiente: </b><%= @student.legal_guardian %></p>
               <p><b>Telefono acudiente: </b><%= @student.phone_lg %></p>
               <p><b>Eps: </b><%= @student.eps %></p>
+              <%= link_to "Editar Información del Estudiante", edit_student_path(:student_id => params[:id]), remote: true, class:"btn btn-outline-secondary" %>
             </div>
           </div>
         </div>
