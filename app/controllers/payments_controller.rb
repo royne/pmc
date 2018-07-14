@@ -6,7 +6,7 @@ class PaymentsController < ApplicationController
   def new
     # byebug
     @payment = Payment.new
-    @student = params[:student_id] 
+    @student = params[:student_id]
   end
 
   def create

@@ -51,6 +51,41 @@
 
   <div class="col-sm-11 line-div"></div>
 
+  <div class="row justify-content-around title">
+    <div class="col-sm-3 text-center">
+      <a class="btn btn-dark  " data-toggle="collapse" href="#et" role="button" aria-expanded="false" >
+        <i class="fas fa-users"></i> Total Matriculados
+      </a>
+      <div class="collapse" id="et">
+        <div class="card card-body">
+          <h2><%= @user_students.students.count %></h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 text-center">
+      <a class="btn btn-dark  " data-toggle="collapse" href="#ei" role="button" aria-expanded="false" >
+        <i class="fas fa-users"></i> Estudiantes Inactivos
+      </a>
+      <div class="collapse" id="ei">
+        <div class="card card-body">
+          <h2><%= @state %></h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 text-center">
+      <a class="btn btn-dark  " data-toggle="collapse" href="#ea" role="button" aria-expanded="false" >
+        <i class="fas fa-users"></i> Estudiantes Activos
+      </a>
+      <div class="collapse" id="ea">
+        <div class="card card-body">
+          <h2><%= @user_students.students.count - @state %></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-11 line-div"></div>
+
   <div class="row justify-content-center bottom-card">
     <div class="col-sm-4 text-center">
       <h2 class=" title text-center">Total Pagos Mes de <%= Time.now.strftime("%b") %></h2>

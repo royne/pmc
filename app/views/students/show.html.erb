@@ -1,5 +1,4 @@
 <div class="container">
-  <%= link_to '<i class="fas fa-arrow-left"></i> Volver'.html_safe, students_path %></i>
   <div class="row justify-content-around container-style">
     <div class="col-sm-8">
       <div class="student-profile">
@@ -15,10 +14,12 @@
             <div class="card card-body">
               <p><b>Edad: </b><%= @student.age %></p>
               <p><b>Telefono: </b><%= @student.cellphone %></p>
+              <p><b>Email: </b><%= @student.email %></p>
               <p><b>Dirección: </b><%= @student.address %></p>
               <p><b>Acudiente: </b><%= @student.legal_guardian %></p>
               <p><b>Telefono acudiente: </b><%= @student.phone_lg %></p>
               <p><b>Eps: </b><%= @student.eps %></p>
+              <%= link_to "Editar Información del Estudiante", edit_student_path(:student_id => params[:id]), remote: true, class:"btn btn-outline-secondary" %>
             </div>
           </div>
         </div>
@@ -26,7 +27,11 @@
     </div>
     <div class="col-sm-2">
       <h2 class="title_show">Estado:</h2>
-      <h3 style="color: green;"><b>ACTIVO</b></h3><br>
+      <% if @student.state == true %>
+        <h3 style="color: green;"><b>ACTIVO</b></h3><br>
+      <% else %>
+        <h3 style="color: red;"><b>INACTIVO</b></h3><br>
+      <% end %>
       <div class="button-pay">
         <%= link_to "Nuevo Pago", new_payment_path(:student_id => params[:id]), remote: true, class:"btn btn-dark" %>
       </div>
