@@ -45,6 +45,17 @@ class StudentsController < ApplicationController
     @student = Student.update(params[:id], students_params)
   end
 
+  # descarga de xls
+  def xls_students
+    @query = User.find(current_user.id)
+    respond_to do |format|
+      format.html
+      format.xlsx{
+        response.headers['Content-Disposition'] = 'attachment; filename="Estudiantes.xlsx"'
+      }
+    end
+  end
+
   private
     def students_params
       params.require(:student).permit(:name, :last_name, :cellphone, :age, :address, :course, :legal_guardian, :phone_lg, :eps, :email, :state)

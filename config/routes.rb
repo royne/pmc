@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   get 'expirations/index'
   get 'statistics/index'
   get 'state/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # descarga xlsx
+  get 'xls_students', to:'students#xls_students', as:'xls_students'
+
 end

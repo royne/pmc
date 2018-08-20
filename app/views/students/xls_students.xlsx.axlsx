@@ -1,0 +1,33 @@
+wb = xlsx_package.workbook
+wb.styles do |s|
+  @bold       = s.add_style b: true
+end
+
+wb.add_worksheet(name: "Estudiantes") do |sheet|
+  sheet.add_row [
+                'Id',
+                'Nombre',
+                'Apellido',
+                'Celular',
+                'Email',
+                'Edad',
+                'Dirección',
+                'Programa',
+                'Acudiente',
+                'Cel Acudiente',
+                'Eps'], style: @bold
+  @query.students.each do |student|
+    sheet.add_row [
+                  student.id,
+                  student.name,
+                  student.last_name,
+                  student.cellphone,
+                  student.email,
+                  student.age,
+                  student.address,
+                  student.course,
+                  student.legal_guardian,
+                  student.phone_lg,
+                  student.eps]
+  end
+end
