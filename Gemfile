@@ -20,6 +20,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'devise'
+
+# graphics
 gem 'groupdate'
 gem "chartkick"
 
@@ -46,6 +48,9 @@ gem 'axlsx_rails'
 #debug
 gem 'pry' # call binding.pry anywhere in the code to stop the execution and have access to the irb in the server terminal.
 gem 'pry-nav'
+
+# roles
+gem 'rolify'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
