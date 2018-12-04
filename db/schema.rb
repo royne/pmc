@@ -35,14 +35,6 @@ ActiveRecord::Schema.define(version: 20180908173239) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
-  create_table "states", force: :cascade do |t|
-    t.boolean "state"
-    t.integer "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["student_id"], name: "index_states_on_student_id"
-  end
-
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.string "last_name"

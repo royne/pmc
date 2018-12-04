@@ -47,7 +47,7 @@ class StudentsController < ApplicationController
 
   # descarga de xls
   def xls_students
-    @query = User.find(current_user.id)
+    @query = User.find(current_user.id).students.includes(:payments)
     respond_to do |format|
       format.html
       format.xlsx{
