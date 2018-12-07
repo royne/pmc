@@ -4,7 +4,7 @@ class StatisticsController < ApplicationController
     @current_date = Time.now.strftime("%y%m%d")
 
     students_debtors = Array.new
-    @user_students.students.each do |student|
+    @user_students.students.includes(:payments).each do |student|
       if student.payments.last.end_date.strftime("%y%m%d") < @current_date
         students_debtors.push(student)
       end
@@ -13,7 +13,7 @@ class StatisticsController < ApplicationController
 
     # suma ingresos x Mes
     @sum_month = 0
-    @user_students.students.each do |student|
+    @user_students.students.includes(:payments).each do |student|
       student.payments.each do |payments|
         if payments.start_date.strftime("%m") == Time.now.strftime("%m")
           @sum_month = payments.price + @sum_month

@@ -1,13 +1,13 @@
 class StudentsController < ApplicationController
   def index
-    @students = Student.all
-    @array_students_user = []
+    @students = current_user.students.includes(:payments).order(state: :desc)
     @current_date = Time.now.strftime("%y%m%d")
 
     q = "%#{params[:keyword]}%"
     @students = @students.where("name LIKE ? OR last_name LIKE ? OR course LIKE ?", q, q, q)
 
     @user_students = User.find(current_user.id)
+    @payMonth = @user_students.students.joins(:payments).group(:month).sum(:price)
   end
 
   def new
