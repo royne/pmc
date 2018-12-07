@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <% @students.each do |student| %>
-          <% if signed_in? && student.user == current_user  %>
+          <% if signed_in? %>
             <tbody>
               <tr>
                 <td><%= student.name %></td>
@@ -53,12 +53,7 @@
         <div class="col-sm-4">
           <div class="text-center">
             <h4 class="title">Numero de Estudiantes: </h4>
-            <% @students.each do |student| %>
-              <% if student.user_id == current_user.id %>
-                <% @array_students_user.push(student) %>
-              <% end %>
-            <% end %>
-            <h3 class="title"><%= @array_students_user.length %></h3>
+            <h3 class="title"><%= @students.length %></h3>
           </div>
         </div>
         <!-- formulario de busqueda -->
@@ -94,14 +89,9 @@
 
 <div class="col-sm-11 text-center">
   <a class="btn btn-dark  " data-toggle="collapse" href="#pxs" role="button" aria-expanded="false" >
-    <i class="fas fa-users"></i> Pago por Estudiantes
+    <i class="fas fa-users"></i> Pagos totales por mes
   </a>
   <div class="collapse" id="pxs">
-    <% c = [] %>
-    <% @array_students_user.each do |q| %>
-      <% c << d = Array.new.push(q.name) %>
-      <% d << q.payments.sum { |p| p.price } %>
-    <% end %>
-    <%= bar_chart c, colors:["green"] %>
+    <%= bar_chart @payMonth, colors:["green"], prefix:"$", thousands:"," %>
   </div>
 </div>

@@ -15,8 +15,10 @@ wb.add_worksheet(name: "Estudiantes") do |sheet|
                 'Programa',
                 'Acudiente',
                 'Cel Acudiente',
-                'Eps'], style: @bold
-  @query.students.each do |student|
+                'Eps',
+                'Fecha de matricula',
+                'Total pagos'], style: @bold
+  @query.each do |student|
     sheet.add_row [
                   student.id,
                   student.name,
@@ -28,6 +30,8 @@ wb.add_worksheet(name: "Estudiantes") do |sheet|
                   student.course,
                   student.legal_guardian,
                   student.phone_lg,
-                  student.eps]
+                  student.eps,
+                  student.created_at,
+                  student.payments.sum(:price)]
   end
 end
