@@ -3,6 +3,7 @@
   <head>
     <%= csrf_meta_tags %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Trykker" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -91,7 +92,11 @@
       </div>
     </section>
 
-    <section id="features-two">
+    <section id="video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/VYA6MdNLdWc?" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+
+    <section id="features_two">
 
     </section>
 
@@ -99,17 +104,53 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-4">
-            <h3></h3>
+            <h3>Contáctanos</h3>
+            <ul>
+              <li><i class="fa fa-envelope"></i> payzaiens@gmail.com</li>
+              <li><i class="fa fa-phone-square"></i> 319 4942731 - 305 7044164</li>
+              <li><i class="fa fa-map-marker"></i> Bogotá, Colombia</li>
+            </ul>
           </div>
           <div class="col-md-4">
-            <h3></h3>
+            <h3>Nosotros</h3>
+            <ul>
+              <li>Como Funciona PayZaiens</li>
+              <li>Costos</li>
+              <li>Iniciar Ahora</li>
+              <li>Ayuda</li>
+            </ul>
           </div>
           <div class="col-md-4">
-            <h3></h3>
+            <h3>Síguenos</h3>
+            <a href="https://www.facebook.com/royne.chaves" class="social" target="_blank"><i class="fab fa-facebook-square"></i></a>
+            <a href="https://twitter.com/roynechaves" class="social" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/royne-chaves-49618a168/" class="social" target="_blank"><i class="fab fa-youtube"></i></i></a>
           </div>
         </div>
       </div>
     </footer>
-    <p class="p-footer">©zaiens dev.</p>
+    <p class="p-footer">Desarrollado por <a href="http://zaiens.com" target="_blank">©Zaiens</a> developers.</p>
+
+    <div class="" id="js_up">
+      <img src="<%= asset_path('ico_top.png') %>" alt="">
+    </div>
+
+    <script>
+      $(document).ready(function(){
+        // boton scrollTop
+        $(window).scroll(function(){
+          if ($(this).scrollTop() > 500) {
+            $('#js_up').fadeIn();
+          } else {
+            $('#js_up').fadeOut();
+          }
+        });
+      });
+
+      // animacion boton top
+      $('#js_up').click(function(){
+        $('body, html').animate({scrollTop: 0 }, 1000);
+      });
+    </script>
   </body>
 </html>

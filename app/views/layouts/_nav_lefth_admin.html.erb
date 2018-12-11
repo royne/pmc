@@ -1,0 +1,28 @@
+<div class="conainer">
+  <div class="row justify-content-start">
+    <div class="col-sm-2 nav-left">
+      <div class="nav-button">
+        <%= link_to 'Estudiantes', students_path %>
+      </div>
+      <div class="nav-button">
+        <%= link_to '<i class="fas fa-arrow-left"></i> Volver'.html_safe, students_path %></i>
+      </div>
+    </div>
+
+    <div class="col-sm-10">
+      <% if flash[:notice] %>
+        <div class="alert alert-info"><%= flash[:notice] %></div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
+
+      <div class="index_layout">
+        <%= yield %>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
