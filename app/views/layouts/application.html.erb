@@ -39,62 +39,24 @@
     </nav>
 
     <!-- navegacion lateral  -->
-    <div class="conainer">
-      <div class="row justify-content-start">
-        <% if signed_in? %>
-          <div class="col-sm-2 nav-left">
-            <div class="nav-button">
-              <%= link_to 'Estudiantes', students_path %>
-            </div>
-            <div class="nav-button">
-              <%= link_to 'Nuevo Estudiante', new_student_path, remote: true %>
-            </div>
-            <div class="nav-button">
-              <%= link_to 'Deudores', debtors_index_path %>
-            </div>
-            <div class="nav-button">
-              <%= link_to 'Por Vencer', expirations_index_path %>
-            </div>
-            <div class="nav-button">
-              <%= link_to 'Estadisticas', statistics_index_path %>
-            </div>
-            <div class="nav-button">
-              <%= link_to 'Inactivos', state_index_path %>
-            </div>
-            <div class="nav-button">
-              <%= link_to 'Descarga xls', xls_students_path(format: :xlsx) %>
-            </div>
-            <div class="nav-button">
-              <%= link_to '<i class="fas fa-arrow-left"></i> Volver'.html_safe, students_path %></i>
-            </div>
-          </div>
 
-          <div class="col-sm-10">
-
-            <% if flash[:notice] %>
-              <div class="alert alert-info"><%= flash[:notice] %></div>
-            <% end %>
-            <% if flash[:alert] %>
-              <div class="alert alert-danger"><%= flash[:alert] %></div>
-            <% end %>
-
-            <%= yield %>
-          </div>
-        <% else %>
-          <div class="col-sm-12">
-
-            <% if flash[:notice] %>
-              <div class="alert alert-info"><%= flash[:notice] %></div>
-            <% end %>
-            <% if flash[:alert] %>
-              <div class="alert alert-danger"><%= flash[:alert] %></div>
-            <% end %>
-
-            <%= yield %>
-          </div>
+    <% if signed_in? %>
+      <% if current_user.has_role? :user %>
+        <%= render 'layouts/nav_lefth' %>
+      <% elsif current_user.has_role? :admin %>
+        <%= render 'layouts/nav_lefth_admin' %>
+      <% end %>
+    <% else %>
+      <div class="col-sm-12">
+        <% if flash[:notice] %>
+        <div class="alert alert-info"><%= flash[:notice] %></div>
+        <% end %>
+        <% if flash[:alert] %>
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
         <% end %>
       </div>
-    </div>
+      <%= yield %>
+    <% end %>
 
 
   </body>
