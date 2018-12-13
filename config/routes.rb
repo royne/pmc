@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get 'state/index'
   # descarga xlsx
   get 'xls_students', to:'students#xls_students', as:'xls_students'
+  
   get 'admin/index'
+
+  get 'admin/show'
+  get '/admin/:id', to: 'admin#show'
 
 end

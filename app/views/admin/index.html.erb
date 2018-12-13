@@ -36,7 +36,9 @@
                 <%= l(user.current_sign_in_at, format: "%y") %>
               </td>
               <td class="text-center"><i class="far fa-check-circle" style="color: green;" id="pay-color"></i></td>
-              <td class="text-center"><i id="eye-color" class="far fa-eye"></i></td>
+              <td class="text-center">
+                <%= link_to '<i id="eye-color" class="far fa-eye" style="color: #403E38;"></i>'.html_safe, user.username %>
+              </td>
             </tr>
           <% end %>
         </tbody>
