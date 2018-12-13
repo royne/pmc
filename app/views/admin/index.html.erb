@@ -1,7 +1,46 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h1>royne</h1>
+      <h1>Listado de usuarios en la plataforma</h1>
+    </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-hover table-sm">
+        <thead class="thead-light">
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>No. Estudiantes</th>
+            <th class="text-right">F. de registro</th>
+            <th class="text-right">Ultimo ingreso</th>
+            <th class="text-center">Estado</th>
+            <th class="text-center">Detalle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.username %></td>
+              <td><%= user.email %></td>
+              <td class="text-center"><b><%= user.students.length %></b></td>
+              <td class="text-right">
+                <%= l(user.created_at, format: "%d") %>
+                <%= l(user.created_at, format: "%b") %>
+                <%= l(user.created_at, format: "%y") %>
+              </td>
+              <td class="text-right">
+                <%= l(user.current_sign_in_at, format: "%d") %>
+                <%= l(user.current_sign_in_at, format: "%b") %>
+                <%= l(user.current_sign_in_at, format: "%y") %>
+              </td>
+              <td class="text-center"><i class="far fa-check-circle" style="color: green;" id="pay-color"></i></td>
+              <td class="text-center"><i id="eye-color" class="far fa-eye"></i></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
