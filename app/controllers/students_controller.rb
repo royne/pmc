@@ -29,12 +29,7 @@ class StudentsController < ApplicationController
     @payments = Payment.all.order(created_at: :desc)
     @current_date = Time.now.strftime("%y%m%d")
 
-    @sum = 0
-    @payments.each do |payment|
-     if payment.student_id == @student.id
-       @sum = @sum + payment.price
-     end
-    end
+    @sum = @student.payments.sum(:price)
   end
 
   def edit
@@ -48,6 +43,7 @@ class StudentsController < ApplicationController
   # descarga de xls
   def xls_students
     @query = User.find(current_user.id).students.includes(:payments)
+    @payMonth = User.find(current_user.id).students.joins(:payments).group(:month).sum(:price)
     respond_to do |format|
       format.html
       format.xlsx{
