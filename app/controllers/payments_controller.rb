@@ -29,6 +29,12 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def destroy
+    payment = Payment.find(params[:id])
+    payment.destroy
+    redirect_to student_path(payment.student_id), notice: "El pago fue eliminado con exito"
+  end
+
   private
     def payments_params
       params.require(:payment).permit(:month, :start_date, :end_date, :price, :detail, :student_id)
