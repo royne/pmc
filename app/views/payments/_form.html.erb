@@ -8,7 +8,11 @@
       <%= form_for @payment, remote: true do |f| %>
         <div class="modal-body text_modal">
           <div class="form-group">
-            <%= f.hidden_field(:student_id, :value => @student)  %>
+            <% if @student != nil %>
+              <%= f.hidden_field(:student_id, :value => @student)  %>
+            <% else %>
+              <%= f.hidden_field(:student_id, :value => @payment.student_id)  %>
+            <% end %>
           </div>
           <div class="form-group">
             <% monts = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'] %>
@@ -32,7 +36,15 @@
         </div>
 
         <div class="modal-footer">
-          <%= f.submit 'Crear Pago', class: "btn btn-dark btn-lg btn-block" %>
+          <%= f.submit button_title, class: "btn btn-dark btn-lg btn-block" %>
+        </div>
+
+        <div class="modal-footer">
+          <% if @student == nil %>
+            <div class="btn btn-danger btn-lg btn-block">
+              <%= link_to "Eliminar", payment_path(@payment.id), method: :delete, data: { confirm: "¿Estás seguro de eliminar este pago?" }, style:"color: #FFFFFF " %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>

@@ -35,3 +35,33 @@ wb.add_worksheet(name: "Estudiantes") do |sheet|
                   student.payments.sum(:price)]
   end
 end
+wb.add_worksheet(name: "Pagos mensuales") do |sheet|
+  sheet.add_row [
+                'Mes',
+                'Total'], style: @bold
+  @payMonth.each do |month, value|
+    sheet.add_row [
+                  month,
+                  value]
+  end
+end
+wb.add_worksheet(name: "Pagos mensuales x estudiante") do |sheet|
+  sheet.add_row [
+                'Id',
+                'Nombre',
+                'Apellido',
+                'Programa',
+                'Mes',
+                'Valor'], style: @bold
+  @query.each do |student|
+    student.payments.group(:month).sum(:price).each do |month, value|
+      sheet.add_row [
+                    student.id,
+                    student.name,
+                    student.last_name,
+                    student.course,
+                    month,
+                    value]
+      end
+  end
+end
