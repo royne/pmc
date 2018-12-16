@@ -17,6 +17,18 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def edit
+    @payment = Payment.find(params[:id])
+  end
+
+  def update
+    student = params[:id]
+    @payment = Payment.update(params[:id], payments_params)
+    if @payment.update(payments_params)
+      redirect_to student_path(@payment.student_id), notice: "El pago se actualizo con exito"
+    end
+  end
+
   private
     def payments_params
       params.require(:payment).permit(:month, :start_date, :end_date, :price, :detail, :student_id)

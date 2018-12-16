@@ -38,6 +38,9 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.update(params[:id], students_params)
+    if @student.update(students_params)
+      redirect_to student_path, notice: "El estudiante se actualizo con exito"
+    end
   end
 
   # descarga de xls

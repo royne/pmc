@@ -1,5 +1,5 @@
 <!-- FILAS DE PAGOS  -->
-<tr>
+<tr class="row_payment" onclick="deletePayment(this)" id="<%=payment.id%>">
   <td><%= payment.month %></td>
   <td class="text-center">
     <%= l(payment.start_date, format: "%d") %>

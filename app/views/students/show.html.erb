@@ -99,3 +99,16 @@
     </div>
   </div>
 </div>
+
+<script>
+  function deletePayment(e){
+    var confirMessage = confirm('¿quieres modificar o eliminar este registro?');
+    var id_payment = e.attributes.id.value;
+    if (confirMessage) {
+      $.ajax({
+        url: "/payments/"+id_payment+"/edit",
+        type: 'get'
+      })
+    }
+  }
+</script>
