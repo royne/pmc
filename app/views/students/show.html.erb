@@ -4,7 +4,7 @@
       <div class="student-profile">
         <div class="student-header">
           <h1 class="title_show"><b><%= @student.name.upcase %> <%= @student.last_name.upcase %></b></h1>
-          <h3>Programa: <%= @student.course.capitalize %></h3>
+          <h3>Programa: <%= @course.empty? ? "No hay asignados cursos" : @course.last.name.capitalize %></h3>
         </div>
         <div class="student-body">
           <a class="btn btn-dark  " data-toggle="collapse" href="#cv" role="button" aria-expanded="false" >
@@ -19,6 +19,13 @@
               <p><b>Acudiente: </b><%= @student.legal_guardian %></p>
               <p><b>Telefono acudiente: </b><%= @student.phone_lg %></p>
               <p><b>Eps: </b><%= @student.eps %></p>
+              <p><b>Cursos: </b>
+                <% unless @course.empty? %>
+                  <% @course.each do |c| %>
+                    <%= @course.length != 1 ? "#{c.name.capitalize}, " : "#{c.name.capitalize}"%>
+                  <%end%>
+                <%end%>
+              </p>
               <%= link_to "Editar Información del Estudiante", edit_student_path(:student_id => params[:id]), remote: true, class:"btn btn-outline-secondary" %>
             </div>
           </div>

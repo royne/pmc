@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :students
   resources :payments
+  resources :courses, only: [:new, :create]
 
   devise_for :users
 
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
   get 'state/index'
   # descarga xlsx
   get 'xls_students', to:'students#xls_students', as:'xls_students'
-  
+
   get 'admin/index'
 
   get 'admin/show'

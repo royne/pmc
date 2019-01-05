@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180908173239) do
+ActiveRecord::Schema.define(version: 20190105014445) do
+
+  create_table "courses", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_courses_on_user_id"
+  end
+
+  create_table "courses_students", id: false, force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "student_id"
+    t.index ["course_id"], name: "index_courses_students_on_course_id"
+    t.index ["student_id"], name: "index_courses_students_on_student_id"
+  end
 
   create_table "payments", force: :cascade do |t|
     t.string "month"
@@ -35,14 +50,6 @@ ActiveRecord::Schema.define(version: 20180908173239) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
-  create_table "states", force: :cascade do |t|
-    t.boolean "state"
-    t.integer "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["student_id"], name: "index_states_on_student_id"
-  end
-
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.string "last_name"
@@ -50,7 +57,6 @@ ActiveRecord::Schema.define(version: 20180908173239) do
     t.string "email"
     t.integer "age"
     t.string "address"
-    t.string "course"
     t.string "legal_guardian"
     t.string "phone_lg"
     t.string "eps"

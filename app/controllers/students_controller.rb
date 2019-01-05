@@ -1,13 +1,20 @@
 class StudentsController < ApplicationController
   def index
-    @students = current_user.students.includes(:payments).order(state: :desc)
+    @students = current_user.students.includes(:payments, :courses).order(state: :desc)
     @current_date = Time.now.strftime("%y%m%d")
 
-    q = "%#{params[:keyword]}%"
-    @students = @students.where("name LIKE ? OR last_name LIKE ? OR course LIKE ?", q, q, q)
+    if params[:keyword].present?
+      q = "%#{params[:keyword]}%"
+      @students = @students.where("name LIKE ? OR last_name LIKE ?", q, q)      
+    end
+
+    if params[:course_id].present?
+      @students =current_user.students.joins(:courses).where("course_id = ?", params[:course_id])
+    end
 
     @user_students = User.find(current_user.id)
     @payMonth = @user_students.students.joins(:payments).group(:month).sum(:price)
+    @courses = current_user.courses.joins(:students).group(:name).count
   end
 
   def new
@@ -30,6 +37,7 @@ class StudentsController < ApplicationController
     @current_date = Time.now.strftime("%y%m%d")
 
     @sum = @student.payments.sum(:price)
+    @course = @student.courses
   end
 
   def edit
@@ -57,6 +65,6 @@ class StudentsController < ApplicationController
 
   private
     def students_params
-      params.require(:student).permit(:name, :last_name, :cellphone, :age, :address, :course, :legal_guardian, :phone_lg, :eps, :email, :state)
+      params.require(:student).permit(:name, :last_name, :cellphone, :age, :address, :legal_guardian, :phone_lg, :eps, :email, :state, :course_ids => [])
     end
 end

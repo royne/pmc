@@ -26,9 +26,6 @@
             <%= f.text_field :address, class: "form-control input-lg", placeholder: "Dirección" %>
           </div>
           <div class="form-group">
-            <%= f.text_field :course, class: "form-control input-lg", placeholder: "Programa / Curso" %>
-          </div>
-          <div class="form-group">
             <%= f.text_field :legal_guardian, class: "form-control input-lg", placeholder: "Nombre Acudiente" %>
           </div>
           <div class="form-group">
@@ -42,6 +39,19 @@
             <%= f.label "Estado", class:"text-secondary" %>
             <%= f.select :state, state, class:"form-control" %>
           </div>
+        </div>
+
+        <div class="modal-footer" style="justify-content:flex-start;display:block;">
+          <div class="text-secondary">
+            <p class:"text-secondary">Asigna los cursos del estudiante</p>
+          </div><br>
+          <%= f.collection_check_boxes :course_ids, current_user.courses, :id, :name do |c| %>
+            <div class="form-check form-check-inline">
+              <%= c.label do %>
+              <%= c.check_box %> <%= c.object.name %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
 
         <div class="modal-footer">

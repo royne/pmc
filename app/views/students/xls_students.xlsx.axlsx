@@ -27,7 +27,7 @@ wb.add_worksheet(name: "Estudiantes") do |sheet|
                   student.email,
                   student.age,
                   student.address,
-                  student.course,
+                  student.courses.last.name,
                   student.legal_guardian,
                   student.phone_lg,
                   student.eps,
@@ -59,7 +59,7 @@ wb.add_worksheet(name: "Pagos mensuales x estudiante") do |sheet|
                     student.id,
                     student.name,
                     student.last_name,
-                    student.course,
+                    student.courses.last.name,
                     month,
                     value]
       end

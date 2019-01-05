@@ -13,13 +13,13 @@
             <th class="text-center">Ver</th>
           </tr>
         </thead>
-        <% @user_students.students.each do |student| %>
+        <% @students.each do |student| %>
           <% if student.state == false %>
             <tbody>
               <tr>
                 <td><%= student.name %></td>
                 <td><%= student.last_name %></td>
-                <td><%= student.course %></td>
+                <td><%= student.courses.last.name %></td>
                 <td class="text-center" style="color: #FF3C64"><%= student.payments.last.month %></td>
                 <td class="text-center"><a href="/students/<%= student.id %>"><i id="eye-color" class="far fa-eye" style="color: #403E38;"></i></a></td>
               </tr>
