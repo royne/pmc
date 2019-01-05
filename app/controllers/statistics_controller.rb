@@ -5,7 +5,7 @@ class StatisticsController < ApplicationController
 
     students_debtors = Array.new
     @user_students.students.includes(:payments).each do |student|
-      if student.payments.last.end_date.strftime("%y%m%d") < @current_date
+      if student.payments.empty? == false && student.payments.last.end_date.strftime("%y%m%d") < @current_date
         students_debtors.push(student)
       end
     end
@@ -26,6 +26,8 @@ class StatisticsController < ApplicationController
       e.state == false ? state.push(e) : ""
     end
     @state = state.count
+
+    @courses = current_user.courses.joins(:students).group(:name).count
 
   end
 end

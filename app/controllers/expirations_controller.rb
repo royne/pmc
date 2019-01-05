@@ -1,6 +1,6 @@
 class ExpirationsController < ApplicationController
   def index
-    @students = current_user.students.includes(:payments).order(created_at: :asc)
+    @students = current_user.students.includes(:payments, :courses).order(created_at: :asc)
     @array_students_user = []
 
     @current_date = Time.now.strftime("%y%m%d")

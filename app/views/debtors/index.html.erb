@@ -16,12 +16,12 @@
           </tr>
         </thead>
         <% @students.each do |student| %>
-          <% if signed_in? && student.payments.last.end_date.strftime("%y%m%d") < @current_date %>
+          <% if signed_in? && student.payments.empty? == false && student.payments.last.end_date.strftime("%y%m%d") < @current_date %>
             <tbody>
               <tr>
                 <td><%= student.name %></td>
                 <td><%= student.last_name %></td>
-                <td><%= student.course %></td>
+                <td><%= student.courses.last.name %></td>
                 <td style="color: #FF3C64">
                   <%= l(student.payments.last.end_date, format: "%d") %>
                   <%= l(student.payments.last.end_date, format: "%b") %>
@@ -49,7 +49,10 @@
           <h3 class="title">Busqueda por Nombres</h3>
           <%= form_tag debtors_index_path, method: :get do %>
             <div class="form-group">
-              <%= text_field_tag :q_s, nil, class:"form-control form-control-sm", placeholder:"Buscar" %>
+              <%= text_field_tag :concept, nil, class:"form-control form-control-sm", placeholder:"Buscar" %>
+            </div>
+            <div class="form-group">
+              <%= select_tag :course_id, options_from_collection_for_select(current_user.courses, "id", "name", params[:course_id]), prompt: "Cursos", class: "form-control form-control-sm" %>
             </div>
             <div class="form-group">
               <%= submit_tag "Buscar", name: nil, class: "btn-color btn btn-dark btn-sm btn-block" %>

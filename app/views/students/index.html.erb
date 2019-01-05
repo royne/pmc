@@ -8,7 +8,7 @@
           <tr>
             <th>Nombre</th>
             <th>Apellido</th>
-            <!-- <th>Programa</th> -->
+            <th>Programa</th>
             <th class="text-center">Estado</th>
             <th class="text-center">Pago</th>
             <th class="text-center">Ver</th>
@@ -20,7 +20,7 @@
               <tr>
                 <td><%= student.name %></td>
                 <td><%= student.last_name %></td>
-                <!-- <td><%# student.course %></td> -->
+                <td><%= student.courses.empty? ? "" : student.courses.last.name %></td>
                 <td class="text-center">
                   <% if student.state == false %>
                     <b><i class="far fa-times-circle" style="color: red;" id="pay-color"></i></b>
@@ -63,6 +63,9 @@
             <%= text_field_tag :keyword, nil, class:"form-control form-control-sm", placeholder:"Buscar" %>
           </div>
           <div class="form-group">
+            <%= select_tag :course_id, options_from_collection_for_select(current_user.courses, "id", "name", params[:course_id]), prompt: "Cursos", class: "form-control form-control-sm" %>
+          </div>
+          <div class="form-group">
             <%= submit_tag "Buscar", name: nil, class: "btn-color btn btn-dark btn-sm btn-block" %>
           </div>
           <% end %>
@@ -78,7 +81,7 @@
       <div class="row justify-content-center">
         <div class="col-sm-10">
           <h2 class="title">Estudiantes por Programa</h2>
-          <%# pie_chart @user_students.students.group(:course).count %>
+          <%= pie_chart @courses %>
         </div>
       </div>
     </div>

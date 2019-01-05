@@ -12,7 +12,7 @@ wb.add_worksheet(name: "Estudiantes") do |sheet|
                 'Email',
                 'Edad',
                 'Dirección',
-
+                'Programa',
                 'Acudiente',
                 'Cel Acudiente',
                 'Eps',
@@ -27,7 +27,7 @@ wb.add_worksheet(name: "Estudiantes") do |sheet|
                   student.email,
                   student.age,
                   student.address,
-
+                  student.courses.last.name,
                   student.legal_guardian,
                   student.phone_lg,
                   student.eps,
@@ -50,7 +50,7 @@ wb.add_worksheet(name: "Pagos mensuales x estudiante") do |sheet|
                 'Id',
                 'Nombre',
                 'Apellido',
-
+                'Programa',
                 'Mes',
                 'Valor'], style: @bold
   @query.each do |student|
@@ -59,7 +59,7 @@ wb.add_worksheet(name: "Pagos mensuales x estudiante") do |sheet|
                     student.id,
                     student.name,
                     student.last_name,
-                    
+                    student.courses.last.name,
                     month,
                     value]
       end

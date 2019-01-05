@@ -41,6 +41,19 @@
           </div>
         </div>
 
+        <div class="modal-footer" style="justify-content:flex-start;display:block;">
+          <div class="text-secondary">
+            <p class:"text-secondary">Asigna los cursos del estudiante</p>
+          </div><br>
+          <%= f.collection_check_boxes :course_ids, current_user.courses, :id, :name do |c| %>
+            <div class="form-check form-check-inline">
+              <%= c.label do %>
+              <%= c.check_box %> <%= c.object.name %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
         <div class="modal-footer">
           <%= f.submit button_name, class: "btn btn-dark btn-lg btn-block" %>
         </div>
