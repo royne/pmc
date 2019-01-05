@@ -1,0 +1,21 @@
+<div id="course-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= title %></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <%= form_for @course, remote: true do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.text_field :name, class: "form-control input-lg", placeholder: "Nombre" %>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <%= f.submit button_name, class: "btn btn-dark btn-lg btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

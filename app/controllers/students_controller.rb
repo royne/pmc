@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
     @current_date = Time.now.strftime("%y%m%d")
 
     q = "%#{params[:keyword]}%"
-    @students = @students.where("name LIKE ? OR last_name LIKE ? OR course LIKE ?", q, q, q)
+    @students = @students.where("name LIKE ? OR last_name LIKE ?", q, q)
 
     @user_students = User.find(current_user.id)
     @payMonth = @user_students.students.joins(:payments).group(:month).sum(:price)
@@ -57,6 +57,6 @@ class StudentsController < ApplicationController
 
   private
     def students_params
-      params.require(:student).permit(:name, :last_name, :cellphone, :age, :address, :course, :legal_guardian, :phone_lg, :eps, :email, :state)
+      params.require(:student).permit(:name, :last_name, :cellphone, :age, :address, :legal_guardian, :phone_lg, :eps, :email, :state)
     end
 end
