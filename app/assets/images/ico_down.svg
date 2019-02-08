@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="6px" viewBox="0 0 11 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow_down</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="04.Venta---Paso-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-316.000000, -453.000000)">
+        <path d="M318.936018,461.103448 C319.105441,461.103448 319.291808,461.035613 319.427347,460.899943 L323.90014,456.422838 C324.035679,456.287168 324.103448,456.117581 324.103448,455.931034 C324.103448,455.744488 324.035679,455.574901 323.90014,455.439231 L319.427347,450.962125 C319.156269,450.690786 318.715766,450.690786 318.444688,450.962125 C318.17361,451.233465 318.17361,451.674392 318.444688,451.945732 L322.426151,455.931034 L318.444688,459.916337 C318.17361,460.187677 318.17361,460.628604 318.444688,460.899943 C318.580227,461.035613 318.749651,461.103448 318.936018,461.103448 Z" id="arrow_down" fill="#FFFFFF" fill-rule="nonzero" transform="translate(321.172414, 455.931034) rotate(-270.000000) translate(-321.172414, -455.931034) "></path>
+    </g>
+</svg>

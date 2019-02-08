@@ -14,7 +14,7 @@
     <div class="baner">
       <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: rgba(255,255,255,0.0);">
         <div class="container">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="#"><b>PayZaiens</b></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars i-font"></i>
           </button>
@@ -39,35 +39,35 @@
       </nav>
 
       <section id="home">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-sm-12">
-              <h1>GESTIONA LA OPERACIÓN DE TU INSTITUCIÓN EN LINEA</h1>
-              <p class="p-button"><%= link_to 'Pruébalo GRATIS', new_user_registration_path, class:'link-button' %></p>
-            </div>
+        <h1>GESTIONA LA OPERACIÓN DE TU INSTITUCIÓN EN LINEA</h1>
+        <p>Ten todo en un solo lugar y no te vuelvas a preocupar por buscar nada mas</p>
+        <%= link_to new_user_registration_path, class:'link-button' do %>
+          <div class="home_button">
+            Pruébalo GRATIS
           </div>
-        </div>
+        <% end %>
+        <div class="ico_down"><img src="<%=asset_path('ico_down.svg')%>" alt=""></div>
       </section>
     </div>
 
     <section id="features">
-      <div class="container">
+      <!-- <div class="container"> -->
         <div class="row justify-content-center">
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="div-features">
               <i class="far fa-address-card"></i>
               <h4>GESTIONA LA HOJA DE VIDA DE TUS ALUMNOS</h3>
               <p class="text-secondary">Es muy fácil, solo crea un nuevo alumno y conoce todo sobre el, permanencia, cursos, pagos, deudas… ten control de todo en un solo lugar.</p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="div-features">
               <i class="far fa-money-bill-alt"></i>
               <h4>CONOCE CUAL ES TU CARTERA</h3>
               <p class="text-secondary">Detalle especifico de cuanto te deben y quines son los alumnos que no se encuentran al dia, facil y rápido y en tan solo unos clicks.</p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="div-features">
               <i class="fas fa-chart-line"></i>
               <h4>LLEVA UN CONTROL DE TUS INGRESOS</h3>
@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-      </div>
+      <!-- </div> -->
     </section>
 
     <section id="banner">
@@ -85,7 +85,9 @@
             <h1>PAGA SOLO POR LO QUE UTILICES!!!</h1>
             <p>No tendrás que preocuparte por costosas facturas al final del mes, pago  solo por lo que utilices y siempre ten el control de tu operación.</p>
             <div>
-              <p class="p-button">Conoce nuestras tarifas</p>
+              <%= link_to new_user_registration_path do%>
+                <p class="p-button">Conoce nuestras tarifas</p>
+              <% end %>
             </div>
           </div>
         </div>
@@ -149,7 +151,12 @@
 
       // animacion boton top
       $('#js_up').click(function(){
-        $('body, html').animate({scrollTop: 0 }, 1000);
+        $('body, html').animate({scrollTop: 0 }, 2000);
+      });
+
+      // animacion boton down
+      $('.ico_down').click(function(){
+        $('body, html').animate({scrollTop: $('.baner').height() }, 2000);
       });
     </script>
   </body>
