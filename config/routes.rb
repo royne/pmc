@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get 'admin/show'
   get '/admin/:id', to: 'admin#show'
 
+  post 'students/updateUserNew', to:'students#updateUserNew'
+
 end

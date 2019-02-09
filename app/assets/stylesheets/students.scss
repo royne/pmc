@@ -26,3 +26,23 @@
 .index_bottom{
   margin-bottom: 30px;
 }
+
+// ============= update user neW ==============
+
+.update_user{
+  margin-top: 20px;
+  text-shadow: 0 5px 10px rgba(33, 37, 41, 0.8);
+  .container_update_user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    margin-top: 40px;
+    .form_block{
+      box-shadow: 0 5px 10px rgba(33, 37, 41, 0.8);
+      // background: #FFFFFF;
+      padding: 40px 30px;
+
+    }
+  }
+}

@@ -1,11 +1,15 @@
 class StudentsController < ApplicationController
   def index
+    if current_user.sign_in_count > 2 && current_user.phone == nil
+      render 'update_user_new'
+    end
+    
     @students = current_user.students.includes(:payments, :courses).order(state: :desc)
     @current_date = Time.now.strftime("%y%m%d")
 
     if params[:keyword].present?
       q = "%#{params[:keyword]}%"
-      @students = @students.where("name LIKE ? OR last_name LIKE ?", q, q)      
+      @students = @students.where("name LIKE ? OR last_name LIKE ?", q, q)
     end
 
     if params[:course_id].present?
@@ -61,6 +65,16 @@ class StudentsController < ApplicationController
         response.headers['Content-Disposition'] = 'attachment; filename="Estudiantes.xlsx"'
       }
     end
+  end
+
+  # actualiza los datos del usuario
+  def updateUserNew
+    user = current_user
+    name = params[:name]
+    phone = params[:phone]
+    address = params[:address]
+    user.update(name: name, phone: phone, address: address)
+    redirect_to students_path
   end
 
   private
