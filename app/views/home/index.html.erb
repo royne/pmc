@@ -14,7 +14,7 @@
     <div class="baner">
       <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: rgba(255,255,255,0.0);">
         <div class="container">
-          <a class="navbar-brand" href="#"><b>PayZaiens</b></a>
+          <a class="navbar-brand" href="/"><img src="<%=asset_path('payzaiens_blanco.png')%>" alt="PayZaiens" style="width:200px;height:60px"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars i-font"></i>
           </button>
@@ -22,10 +22,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <!-- <a class="nav-link" href="#">Link</a> -->
               </li>
             </ul>
 
@@ -53,25 +53,25 @@
     <section id="features">
       <!-- <div class="container"> -->
         <div class="row justify-content-center">
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="div-features">
               <i class="far fa-address-card"></i>
               <h4>GESTIONA LA HOJA DE VIDA DE TUS ALUMNOS</h3>
               <p class="text-secondary">Es muy fácil, solo crea un nuevo alumno y conoce todo sobre el, permanencia, cursos, pagos, deudas… ten control de todo en un solo lugar.</p>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="div-features">
               <i class="far fa-money-bill-alt"></i>
               <h4>CONOCE CUAL ES TU CARTERA</h3>
-              <p class="text-secondary">Detalle especifico de cuanto te deben y quines son los alumnos que no se encuentran al dia, facil y rápido y en tan solo unos clicks.</p>
+              <p class="text-secondary">Detalle especifico de cuanto te deben y quienes son los alumnos que no se encuentran al dia, facil y rápido y en tan solo unos clicks.</p>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="div-features">
               <i class="fas fa-chart-line"></i>
               <h4>LLEVA UN CONTROL DE TUS INGRESOS</h3>
-              <p class="text-secondary">Conocer al detalle cuanto te ha entrado por conceptos de mensualidades, matriculas etc. nunca ha sido mas fácil tener todo en orden.</p>
+              <p class="text-secondary">Conoce al detalle cuanto te ha entrado por conceptos de mensualidades, matriculas etc. nunca ha sido mas fácil tener todo en orden.</p>
             </div>
           </div>
         </div>
@@ -99,7 +99,7 @@
     </section>
 
     <section id="features_two">
-
+      <img src="<%=asset_path('payzaiens.png')%>" alt="PayZaiens">
     </section>
 
     <footer>
@@ -145,6 +145,12 @@
             $('#js_up').fadeIn();
           } else {
             $('#js_up').fadeOut();
+          }
+
+          if ($(this).scrollTop() > (document.querySelector('#features_two').offsetTop -200)) {
+            $('#features_two>img').fadeIn();
+          } else {
+            $('#features_two>img').fadeOut()
           }
         });
       });
