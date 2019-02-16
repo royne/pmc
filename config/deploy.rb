@@ -4,7 +4,7 @@ lock "~> 3.11.0"
 set :application, "payzaiens"
 set :repo_url, "git@github.com:royne/pmc.git"
 
-set :deploy_to, '/home/deploy/payzaiens'
+set :deploy_to, '/home/ubuntu/payzaiens'
 
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
