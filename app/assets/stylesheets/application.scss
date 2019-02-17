@@ -21,10 +21,25 @@ body{
 // devise
 .card-devise{
   padding: 20px 25px;
+  @media screen {
+    h2{
+      font-size: 1.7em;
+    }
+  }
 }
 
 .form_devise{
   margin-top: 5%;
+  @media screen and(max-width: 450px){
+    padding: 5% 10%;
+    h1{
+      font-size: 1.7em;
+      margin-bottom: 0;
+    }
+    h3{
+      font-size: 1.2em;
+    }
+  }
 }
 
 //nav admin
