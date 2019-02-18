@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= csrf_meta_tags %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:url"                content="http://pay.zaiens.com" />
+    <meta property="og:title"              content="PayZaiens" />
+    <meta property="og:description"        content="La mejor forma de gestionar todo en un solo lugar" />
+    <meta property="og:image"              content="<%= request.protocol + request.host_with_port + asset_path('payzaiens.png') %>" />
+    <meta name="description" content="Aplicación para la gestion de la operación de entidades educativas">
+    <meta name="keywords" content="payzaiens, zaiens, gestion educativa, pagos, pagos educación">
+    <link rel="icon" type="image/png" href="<%= request.protocol + request.host_with_port + asset_path('ico_z.png') %>" />
+    <link href="https://fonts.googleapis.com/css?family=Trykker" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title>PayZaiens</title>
+  </head>
+  <body>
+    <div class="baner_costs">
+      <%= render 'nav' %>
+      <section id="head">
+        <h1>COMIENZA GRATIS Y DESPUES PAGA SOLO POR LO QUE USAS.</h1>       
+        <%= link_to new_user_registration_path, class:'link-button' do %>
+          <div class="home_button">
+            Comienza AHORA
+          </div>
+        <% end %>
+      </section>
+    </div>
+
+    <section id="info">
+      <div class="info_sec">
+        <h3>Con PayZaiens es muy facial gestionar tu operación, siempre sabes cuanto vas a pagar a fin de mes.</h3>
+        <p>
+          <b>¿Como lo hacemos?</b><br>
+          Es muy sencillo, el cobro se genera por cada estudiante activo que tengas en la plataforma, no importa la cantidad de registros que hagas con cada uno, ni cuantas veces ingreses a realizar cambios. 
+        </p>
+        <span><b>PAGA SOLO POR LO QUE UTILICES!!!</b></span>
+      </div>
+      <div class="info_sec">
+        <div class="table_info mx-auto">
+          <table class="table">
+          <tr>
+            <td>
+              <p>1er mes.</p>
+              <span>GRATIS</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>De <b>1</b> a <b>100</b> estudiantes.</p>
+              <span>$1.500 Pesos c/u.</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>De <b>101</b> en adelante.</p>
+              <span>$1.200 Pesos c/u.</span>
+            </td>
+          </tr>
+        </table>
+        </div>
+      </div>
+    </section>
+
+    <%= render 'fotter' %>
+  </body>
+</html>

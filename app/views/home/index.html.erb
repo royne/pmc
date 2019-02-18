@@ -19,32 +19,7 @@
   </head>
   <body>
     <div class="baner">
-      <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: rgba(255,255,255,0.0);">
-        <div class="container">
-          <a class="navbar-brand" href="/"><img id="logo_nav" src="<%=asset_path('payzaiens_blanco.png')%>" alt="PayZaiens" style="width:200px;height:60px"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars i-font"></i>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
-              </li>
-              <li class="nav-item">
-                <!-- <a class="nav-link" href="#">Link</a> -->
-              </li>
-            </ul>
-
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <%= link_to 'Iniciar Sesión', new_user_session_path, class:"nav-link color-link" %>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
+      <%= render 'nav' %>
       <section id="home">
         <h1>GESTIONA LA OPERACIÓN DE TU INSTITUCIÓN EN LINEA</h1>
         <p>Ten todo en un solo lugar y no te vuelvas a preocupar por buscar nada mas</p>
@@ -92,7 +67,7 @@
             <h1>PAGA SOLO POR LO QUE UTILICES!!!</h1>
             <p>No tendrás que preocuparte por costosas facturas al final del mes, pago  solo por lo que utilices y siempre ten el control de tu operación.</p>
             <div>
-              <%= link_to new_user_registration_path do%>
+              <%= link_to home_costs_path do%>
                 <p class="p-button">Conoce nuestras tarifas</p>
               <% end %>
             </div>
@@ -109,36 +84,7 @@
       <img src="<%=asset_path('payzaiens.png')%>" alt="PayZaiens">
     </section>
 
-    <footer>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-4 pos_mobile">
-            <h3>Contáctanos</h3>
-            <ul>
-              <li><i class="fa fa-envelope"></i> payzaiens@gmail.com</li>
-              <li><i class="fa fa-phone-square"></i> 319 4942731 - 305 7044164</li>
-              <li><i class="fa fa-map-marker"></i> Bogotá, Colombia</li>
-            </ul>
-          </div>
-          <div class="col-md-4 pos_mobile">
-            <h3>Nosotros</h3>
-            <ul>
-              <li>Como Funciona PayZaiens</li>
-              <li>Costos</li>
-              <li>Iniciar Ahora</li>
-              <li>Ayuda</li>
-            </ul>
-          </div>
-          <div class="col-md-4 pos_mobile">
-            <h3>Síguenos</h3>
-            <a href="https://www.facebook.com/royne.chaves" class="social" target="_blank"><i class="fab fa-facebook-square"></i></a>
-            <a href="https://twitter.com/roynechaves" class="social" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/royne-chaves-49618a168/" class="social" target="_blank"><i class="fab fa-youtube"></i></i></a>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <p class="p-footer">Desarrollado por <a href="http://zaiens.com" target="_blank">©Zaiens</a> developers.</p>
+    <%= render 'fotter' %>  
 
     <div class="" id="js_up">
       <img src="<%= asset_path('ico_top.png') %>" alt="">

@@ -76,7 +76,7 @@
     }
     .home_button{
       width: 180px;
-      padding: 13px 35px;
+      padding: 13px 25px;
       font-size: 13px;
     }
     .ico_down{
@@ -231,6 +231,9 @@ footer{
     list-style: none;
     font-size: 14px;
     line-height: 1.5;
+    a{
+      color: #fff;
+    }
   }
   a.social{
     font-size: 30px;

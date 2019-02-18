@@ -21,4 +21,6 @@ Rails.application.routes.draw do
 
   post 'students/updateUserNew', to:'students#updateUserNew'
 
+  get 'home/costs'
+  get 'home/about'
 end
