@@ -1,39 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <%= csrf_meta_tags %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta property="og:url"                content="http://pay.zaiens.com" />
-    <meta property="og:title"              content="PayZaiens" />
-    <meta property="og:description"        content="La mejor forma de gestionar todo en un solo lugar" />
-    <meta property="og:image"              content="<%= request.protocol + request.host_with_port + asset_path('payzaiens.png') %>" />
-    <meta name="description" content="Aplicación para la gestion de la operación de entidades educativas">
-    <meta name="keywords" content="payzaiens, zaiens, gestion educativa, pagos, pagos educación">
-    <link rel="icon" type="image/png" href="<%= request.protocol + request.host_with_port + asset_path('ico_z.png') %>" />
-    <link href="https://fonts.googleapis.com/css?family=Trykker" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <title>PayZaiens</title>
-  </head>
-  <body>
-    <div class="baner_costs">
-      <%= render 'nav' %>
-      <section id="head">
-        <h1>UTILIZAR PAYZAIENS ES MUY FACIL... SOLO REGISTRATE Y LISTO!</h1>       
-        <%= link_to new_user_registration_path, class:'link-button' do %>
-          <div class="home_button">
-            Comienza AHORA
+<head>
+  <%= csrf_meta_tags %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:url" content="http://pay.zaiens.com" />
+  <meta property="og:title" content="PayZaiens" />
+  <meta property="og:description" content="La mejor forma de gestionar todo en un solo lugar" />
+  <meta property="og:image" content="<%= request.protocol + request.host_with_port + asset_path('payzaiens.png') %>" />
+  <meta name="description" content="Aplicación para la gestion de la operación de entidades educativas">
+  <meta name="keywords" content="payzaiens, zaiens, gestion educativa, pagos, pagos educación">
+  <link rel="icon" type="image/png" href="<%= request.protocol + request.host_with_port + asset_path('ico_z.png') %>" />
+  <link href="https://fonts.googleapis.com/css?family=Trykker" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <title>PayZaiens</title>
+</head>
+
+<body>
+  <div class="baner_costs">
+    <%= render 'nav' %>
+    <section id="head">
+      <h1>UTILIZAR PAYZAIENS ES MUY FACIL... SOLO REGISTRATE Y LISTO!</h1>
+      <%= link_to new_user_registration_path, class:'link-button' do %>
+      <div class="home_button">
+        Comienza AHORA
+      </div>
+      <% end %>
+    </section>
+  </div>
+
+  <section id="info">
+    <div class="info_sec sec_accordion">
+      <div class="accordion" id="accordionExample">
+        <div class="crd">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                Pregunta 1
+              </button>
+            </h2>
           </div>
-        <% end %>
-      </section>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+              moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+              Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+              shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+              proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+              aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+        <div class="car">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="false" aria-controls="collapseTwo">
+                Pregunta 2
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+              moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+              Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+              shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+              proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+              aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+        <div class="cad">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+                aria-expanded="false" aria-controls="collapseThree">
+                Pregunta 3
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+              moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+              Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+              shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+              proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+              aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <section id="info">
+    <div class="info_sec">
+      <h3>¿Tienes preguntas sobre como funciona PayZaiens?</h3>
+      <p>
+        En esta sección podrás ver las preguntas mas frecuentes.
+      </p>
+      <span><b>Gestiona tu operación online!!!</b></span>
+    </div>
+  </section>
 
-    </section>
+  <%= render 'fotter' %>
+</body>
 
-    <%= render 'fotter' %> 
-  </body>
 </html>
