@@ -45,6 +45,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
 gem 'axlsx_rails'
 
+# Import xls
+gem 'roo', '~> 2.7', '>= 2.7.1'
+
 #debug
 gem 'pry' # call binding.pry anywhere in the code to stop the execution and have access to the irb in the server terminal.
 gem 'pry-nav'

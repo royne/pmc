@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :students
+  resources :students do
+    collection do
+      get :import
+      post :import_charge
+    end
+  end
+
   resources :payments
   resources :courses, only: [:new, :create]
 

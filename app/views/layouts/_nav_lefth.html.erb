@@ -23,6 +23,9 @@
         <%= link_to 'Inactivos', state_index_path %>
       </div>
       <div class="nav-button">
+        <%= link_to 'Importar xls', import_students_path, remote: true %>
+      </div>
+      <div class="nav-button">
         <%= link_to 'Descarga xls', xls_students_path(format: :xlsx) %>
       </div>
       <div class="nav-button">

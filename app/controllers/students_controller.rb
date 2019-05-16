@@ -77,6 +77,22 @@ class StudentsController < ApplicationController
     redirect_to students_path
   end
 
+  def import
+    @users = User.new
+  end
+
+  def import_charge
+    file = Roo::Spreadsheet.open(params[:user][:xls])
+    xls = file.sheet(0)
+    headers = xls.row(1)
+    students = xls.parse(header_search: headers)
+    students.each do |x| 
+      student = Student.new(user_id: current_user.id, name: x["Nombre"], last_name: x["Apellido"], cellphone: x["Celular"], email: x["Email"], age: ["Edad"], address: x["Dirección"], legal_guardian: x["Acudiente"], phone_lg: x["Cel Acudiente"], eps: x["Eps"], state: true )
+      student.save!
+    end
+  end
+  
+
   private
     def students_params
       params.require(:student).permit(:name, :last_name, :cellphone, :age, :address, :legal_guardian, :phone_lg, :eps, :email, :state, :course_ids => [])
